@@ -88,13 +88,13 @@ void XInput2Mouse::UpdateInput()
       {
         delta_delta = raw_event->raw_values[0];
         if (delta_delta == delta_delta && 1 + delta_delta != delta_delta)
-          delta_x += delta_delta;
+          delta_x += raw_event->valuators.values[0];
       }
       if (XIMaskIsSet(raw_event->valuators.mask, 1))
       {
         delta_delta = raw_event->raw_values[1];
         if (delta_delta == delta_delta && 1 + delta_delta != delta_delta)
-          delta_y += delta_delta;
+          delta_y += raw_event->valuators.values[1];
       }
     }
     XFreeEventData(display, &event.xcookie);
